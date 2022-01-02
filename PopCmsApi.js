@@ -7,14 +7,22 @@ export const GitLogUrl = '/git';
 export const GitLastCommitUrl = '/gitlastcommit';
 export const UploadUrl = '/Upload';
 
+//	gr: setup a better sytem...
+//		instance a "CMS" interface?
+let HostPrefix = ''
+export function SetHost(NewHostPrefix)
+{
+	HostPrefix = NewHostPrefix; 
+}
+
 export function GetAssetUrl(Filename)
 {
-	return `/Asset/${Filename}`;
+	return `${HostPrefix}/Asset/${Filename}`;
 }
 
 function GetAssetUploadUrl(Filename)
 {
-	return `${UploadUrl}?Filename=${Filename}`;
+	return `${HostPrefix}${UploadUrl}?Filename=${Filename}`;
 }
 
 export async function GetFileList()
