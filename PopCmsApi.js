@@ -58,3 +58,17 @@ export async function Upload(Filename,Contents)
 	return Commit;
 }
 
+export async function GetAssetJson(Filename)
+{
+	const Url = GetAssetUrl(Filename);
+	const Response = await fetch(Url);
+	if ( !Response.ok )
+	{
+		let Error = await Response.text();
+		Error += Response.statusText;
+		throw Error;
+	}
+	
+	const Json = await Response.json();
+	return Json;
+}
