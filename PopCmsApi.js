@@ -64,8 +64,9 @@ export async function GetAssetJson(Filename)
 	const Response = await fetch(Url);
 	if ( !Response.ok )
 	{
-		let Error = await Response.text();
-		Error += Response.statusText;
+		//let Body = await Response.text();
+		let Body ='';
+		let Error = `${Response.statusText}; ${Body}`;
 		throw Error;
 	}
 	
